@@ -77,8 +77,25 @@ class Genero():
   def getInfo(self):
     return self.info
 
+####################################Classe usuário
+
+class Convidado():
+  def __init__(self, creditos):
+    self.creditos = creditos
+  def calculaCreditos(self, projeto):
+    self.creditos = self.creditos - projeto.preco
+    return self.creditos
+  def getCreditos(self):
+    return self.creditos
+
+convidado1 = Convidado(200)####### COLOCANDO DINHEIRO
+
 ################################### Menu
 
+print('')
+print('========NETFLIX=======')
+print('')
+print('      Bem Vindo!')
 print('')
 print('======================')
 print('=========MENU=========')
@@ -92,6 +109,10 @@ print('5) Pesquisar Filme')
 print('6) Pesquisar Série')
 print('7) Pesquisar Diretor')
 print('8) Pesquisar Genêro')
+print('----------------------')
+print('10) Ver Carteira')
+print('11) Ver Alugueis')
+print('----------------------')
 print('9) Sair')
 print('======================')
 
@@ -281,6 +302,26 @@ while quest != '9':
       print('')
     else:
       print("Genero não encontrado.")
+
+############Ver Carteira
+  
+  elif quest == '10':
+    print(f'Valor atual em sua carteira: $ {convidado1.getCreditos()}')
+    print('')
+    add_money = input('Deseja adicionar mais dinheiro? ')
+    if add_money == 'sim':
+      money = float(input('Quanto dinheiro deseja adicionar? '))
+      convidado1 = Convidado(money)
+
+############Alugueis
+
+  elif quest == '11':
+    print('============')
+    print('==ALUGUÉIS==')
+    print('============')
+    for a in alugueis:
+      print(f'- {a.getTitulo()}')
+    print('============')
 
 ######Fim programa
   elif quest == '9':
