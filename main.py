@@ -43,7 +43,7 @@ class Serie(Projeto):
     self.qntEps = qntEps
   def calculaDuracaoTotal(self):
     return (self.temporadas * self.duracaoEps * self.qntEps)
-    
+
 ################################ Classes de associação
 
 class Diretor():
@@ -85,36 +85,15 @@ class Convidado():
   def calculaCreditos(self, projeto):
     self.creditos = self.creditos - projeto.preco
     return self.creditos
+  def maisCreditos(self, dinheiro):
+    self.creditos = self.creditos + dinheiro
+    return self.creditos
   def getCreditos(self):
     return self.creditos
 
-convidado1 = Convidado(200)####### COLOCANDO DINHEIRO
+convidado1 = Convidado(0)####### COLOCANDO DINHEIRO
 
-################################### Menu
-
-print('')
-print('========NETFLIX=======')
-print('')
-print('      Bem Vindo!')
-print('')
-print('======================')
-print('=========MENU=========')
-print('======================')
-print('1) Cadastrar Filme')
-print('2) Cadastrar Série')
-print('3) Cadastrar Diretor')
-print('4) Cadastrar Genêro')
-print('----------------------')
-print('5) Pesquisar Filme')
-print('6) Pesquisar Série')
-print('7) Pesquisar Diretor')
-print('8) Pesquisar Genêro')
-print('----------------------')
-print('10) Ver Carteira')
-print('11) Ver Alugueis')
-print('----------------------')
-print('9) Sair')
-print('======================')
+################################### Listas
 
 filmes = []
 series = []
@@ -122,42 +101,146 @@ diretores = []
 generos = []
 alugueis = []
 
+################################### Menu
+
+print('')
+print('========NETFLIX=======')
+print('')
+print('      Bem Vindo!')
+
 quest = 'n'
 while quest != '9': 
 
   print('')
+  print('======================')
+  print('=========MENU=========')
+  print('======================')
+  print('1) Cadastrar Filme')
+  print('2) Cadastrar Série')
+  print('3) Cadastrar Diretor')
+  print('4) Cadastrar Genêro')
+  print('----------------------')
+  print('5) Pesquisar Filme')
+  print('6) Pesquisar Série')
+  print('7) Pesquisar Diretor')
+  print('8) Pesquisar Genêro')
+  print('----------------------')
+  print('9) Ver Carteira')
+  print('10) Ver Alugueis')
+  print('----------------------')
+  print('11) Sair')
+  print('======================')
+  print('')
   quest = input('O que deseja fazer? ')
   print('')
 
-######################################################Cadastro
-############Cadastrar Filme
-  
+###################################################### Cadastro
+############ Cadastrar Filme
+
   if quest == '1':
     titulo1 = input('Titulo: ')
     ano1 = int(input('Ano: '))
-    genero1 = input('Genero: ')
-    preco1 = int(input('Preço: '))
-    diretor1 = input('Diretor: ')
+    ##genero1 = input('Genero: ')
+    genero1 = ''
+    preco1 = int(input('Preço: $ '))
+    ##diretor1 = input('Diretor: ')
     duracao1 = int(input('Duracao em minutos: '))
-    filme1 = Filme(titulo1, ano1, genero1, preco1, diretor1, duracao1)
-    filmes.append(filme1)
-    print('O filme foi cadastrado com sucesso!')
+    ##filme1 = Filme(titulo1, ano1, genero1, preco1, diretor1, duracao1)
+    ##filmes.append(filme1)
+    ##print('O filme foi cadastrado com sucesso!')
+    
+    ##################Teste Associação Diretor
 
-############Cadastrar Serie
+    print('============')
+    print('=DIRETORES=')
+    print('============')
+    for d in diretores:
+      print(f'- {d.getNome()}')
+    print('============')
+    
+    diretor_nome = input('Diretor: ')
   
+    diretor_associado = None
+    for diretor in diretores:
+        if diretor.getNome() == diretor_nome:
+            diretor_associado = diretor
+            break
+  
+    if diretor_associado:
+        ##filme1 = Filme(titulo1, ano1, genero1, preco1, diretor_associado, duracao1)
+        filme1 = Filme(titulo1, ano1, genero1, preco1, diretor_associado, duracao1)
+        ##filmes.append(filme1)
+        ##print("O filme cadastrado com sucesso!")
+    else:
+        print("Diretor não encontrado.")
+        print('Filme NÃO cadastrado.')
+
+    print('')
+    print('===========')
+    print(' GENÊROS')
+    print('===========')
+    for g in generos:
+      print(f'- {g.getName()}')
+    print('===========')
+
+    genero_nome1 = input('Genêro: ')
+
+    genero_associado1 = None
+    for genero in generos:
+      if genero.getName() == genero_nome1:
+        genero_associado1 = genero
+        break
+    
+    if genero_associado1:
+      filme1 = Filme(titulo1, ano1, genero_associado1, preco1, diretor_associado, duracao1)
+      filmes.append(filme1)
+      print("O filme cadastrado com sucesso!")
+    else:
+      print("Genêro não encontrado.")
+      print('Filme NÃO cadastrado.')
+    #########################
+
+############ Cadastrar Serie
+
   elif quest == '2':
     titulo2 = input('Titulo: ')
     ano2 = int(input('Ano: '))
-    genero2 = input('Genero: ')
-    preco2 = int(input('Preço: '))
+    ##genero2 = input('Genero: ')
+    preco2 = int(input('Preço: $ '))
     temporadas = int(input('Quantidade de Temporadas: '))
     qntEps = int(input('Quantidade de episodios por temporada: '))
     duracaoEps = int(input('Duracao dos episodios em minutos: '))
-    serie1 = Serie(titulo2, ano2, genero2, preco2, temporadas, duracaoEps, qntEps)
-    series.append(serie1)
-    print('A série foi cadastrada com sucesso!')
+    ##serie1 = Serie(titulo2, ano2, genero2, preco2, temporadas, duracaoEps, qntEps)
+    ##series.append(serie1)
+    ##print('A série foi cadastrada com sucesso!')
 
-############Cadastrar Diretor
+    ##################Teste Associação Genêro
+    print('')
+    print('===========')
+    print(' GENÊROS')
+    print('===========')
+    for g in generos:
+      print(f'- {g.getName()}')
+    print('===========')
+    genero_nome = input('Genêro: ')
+    print('')
+
+    genero_associado = None
+    for genero in generos:
+        if genero.getName() == genero_nome:
+            genero_associado = genero
+            break
+
+    if genero_associado:
+        serie1 = Serie(titulo2, ano2, genero_associado, preco2, temporadas, duracaoEps, qntEps)
+        series.append(serie1)
+        print('A série foi cadastrada com sucesso!')
+    else:
+        print("Genêro não encontrado.")
+        print('Série NÃO cadastrada.')
+    #########################
+
+############ Cadastrar Diretor
 
   elif quest == '3':
     nome = input('Nome do diretor: ')
@@ -167,18 +250,18 @@ while quest != '9':
     diretores.append(diretor1)
     print('O Diretor foi cadastrado com sucesso!')
 
-############Cadastrar Genero
+############ Cadastrar Genero
 
   elif quest == '4':
     name = input('Genêro: ')
     info = input('Informações do genêro: ')
     genero1 = Genero(name, info)
     generos.append(genero1)
-    print('O filme foi cadastrado com sucesso!')
+    print('O Genêro foi cadastrado com sucesso!')
 
-##################################################Pesquisa
-############Pesquisar Filme
-  
+################################################## Pesquisa
+############ Pesquisar Filme
+
   elif quest == '5':
     print('============')
     print('LISTA FILMES')
@@ -186,7 +269,7 @@ while quest != '9':
     for i in filmes:
       print(f'- {i.getTitulo()}')
     print('============')
-    
+
     escolhe_filme = input('Qual filme deseja saber informações? (digite o titulo) ')
     print('')
     filme_escolhido = None
@@ -204,19 +287,23 @@ while quest != '9':
       print(f'Preço aluguel do filme: $ {filme_escolhido.getPreco()}')
       print('')
       ###################Aluguel
-      aluguel = input('Deseja alugar o filme? ')
-      if aluguel == 'sim':
-        alugueis.append(filme_escolhido)
-        print('')
-        print('Filme alugado com sucesso!')
-        print(f'Valor atual em sua carteira: $ {convidado1.calculaCreditos(filme_escolhido)}')
+      aluguel = input('Deseja alugar o filme? (s/n) ')
+      if aluguel == 's':
+        if (filme_escolhido.getPreco()) <= (convidado1.getCreditos()):
+          alugueis.append(filme_escolhido)
+          print('')
+          print('Filme alugado com sucesso!')
+          print(f'Valor atual em sua carteira: $ {convidado1.calculaCreditos(filme_escolhido)}')
+        else:
+          print('')
+          print('Você não tem créditos suficientes para alugar esse filme!')
       else:
         print('')
       ###########################
     else:
       print("Filme não encontrado.")
 
-############Pesquisar Serie
+############ Pesquisar Serie
 
   elif quest == '6':
     print('============')
@@ -225,7 +312,7 @@ while quest != '9':
     for s in series:
       print(f'- {s.getTitulo()}')
     print('============')
-    
+
     escolhe_serie = input('Qual série você deseja saber informações? ')
     print('')
     serie_escolhida = None
@@ -242,8 +329,8 @@ while quest != '9':
       print(f'Preço aluguel da série: $ {serie_escolhida.getPreco()}')
       print('')
       ###################Aluguel
-      aluguel2 = input('Deseja alugar a série? ')
-      if aluguel2 == 'sim':
+      aluguel2 = input('Deseja alugar a série? (s/n) ')
+      if aluguel2 == 's':
         alugueis.append(serie_escolhida)
         print('')
         print('Série alugada com sucesso!')
@@ -254,7 +341,7 @@ while quest != '9':
     else:
       print("Série não encontrada.")
 
-############Pesquisar Diretor
+############ Pesquisar Diretor
 
   elif quest == '7':
     print('============')
@@ -262,8 +349,8 @@ while quest != '9':
     print('============')
     for d in diretores:
       print(f'- {d.getNome()}')
-    print('===========')
-    
+    print('============')
+
     escolhe_diretor = input('Digite o nome do diretor que deseja saber detalhes: ')
     diretor_escolhido = None
     for diretor in diretores:
@@ -278,17 +365,17 @@ while quest != '9':
       print('')
     else:
       print("Diretor não encontrado.")
-    
-############Pesquisar Genero
+
+############ Pesquisar Genero
 
   elif quest == '8':
-    print('=======')
-    print('GENÊROS')
-    print('=======')
+    print('===========')
+    print(' GENÊROS')
+    print('===========')
     for g in generos:
       print(f'- {g.getName()}')
     print('===========')
-    
+
     escolhe_genero = input('Digite o nome do genêro que deseja saber detalhes: ')
     genero_escolhido = None
     for genero in generos:
@@ -303,19 +390,26 @@ while quest != '9':
     else:
       print("Genero não encontrado.")
 
-############Ver Carteira
-  
-  elif quest == '10':
+############ Ver Carteira
+
+  elif quest == '9':
     print(f'Valor atual em sua carteira: $ {convidado1.getCreditos()}')
     print('')
-    add_money = input('Deseja adicionar mais dinheiro? ')
-    if add_money == 'sim':
-      money = float(input('Quanto dinheiro deseja adicionar? '))
-      convidado1 = Convidado(money)
+    add_money = input('Deseja adicionar mais dinheiro? (s/n) ')
+    if add_money == 's':
+      print('')
+      money = float(input('Quanto dinheiro deseja adicionar? $ '))
+      print('')
+      input('***Digite a senha para aprovar a transação: ')
+      convidado1.maisCreditos(money)
+      print('')
+      print('-----------------------------------------')
+      print(f'Você adicionou $ {money} na sua carteira!')
+      print(f'O valor atual em sua carteira é de $ {convidado1.getCreditos()}')
 
-############Alugueis
+############ Alugueis
 
-  elif quest == '11':
+  elif quest == '10':
     print('============')
     print('==ALUGUÉIS==')
     print('============')
@@ -323,6 +417,7 @@ while quest != '9':
       print(f'- {a.getTitulo()}')
     print('============')
 
-######Fim programa
-  elif quest == '9':
+############ Fim programa
+  
+  elif quest == '11':
     print('Programa Encerrado!')
