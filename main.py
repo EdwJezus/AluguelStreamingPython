@@ -184,6 +184,7 @@ while login != '3':
     op_senha = input('Digite a senha: ')
     print('===================')
     print('')
+    
 
     if op_user == 'operador01' and op_senha == 'senha123':
       print('Login efetuado com sucesso!')
@@ -209,7 +210,7 @@ while login != '3':
         print('')
 
         ##mensagem = '***obs: Primeiro você deve cadastrar genêros e diretores. E só depois os filmes e séries.'
-        mensagem = '***obs: Já existem alguns, genêros, diretores, filmes e séries pré-cadastrados. Porém se você deseja adicionar mais algum, basta cadastra-lo.'
+        mensagem = '***obs: Já existem alguns genêros, diretores, filmes e séries pré-cadastrados. Porém se você deseja adicionar mais algum, basta cadastra-lo no modo operador.'
         cprint('\033[1m\033[3m' + mensagem, 'white', 'on_grey')
         
         print('')
@@ -361,6 +362,10 @@ while login != '3':
     else:
       print('')
       print('Login incorreto!')
+      print('')
+      dica_operador = '***obs: O usuário correto é "operador01" e a senha é "senha123"'
+      cprint('\033[1m\033[3m' + dica_operador, 'white', 'on_grey')
+      print('')
       cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
       input('')
 
