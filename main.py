@@ -221,6 +221,15 @@ while login != '3':
         ############ Cadastrar Filme
 
         if quest == '1':
+          print('========================')
+          print('  FILMES JÁ CADASTRADOS ')
+          print('========================')
+          for i in filmes:
+            print(f'- {i.getTitulo()}')
+          print('========================')
+          print('')
+
+          print('- Cadastrando novo filme.')
           titulo1 = input('Titulo: ').upper()
           ano1 = int(input('Ano: '))
           diretor1 = ''
@@ -283,6 +292,15 @@ while login != '3':
       ############ Cadastrar Serie
 
         elif quest == '2':
+          print('========================')
+          print('  SÉRIES JÁ CADASTRADAS ')
+          print('========================')
+          for s in series:
+            print(f'- {s.getTitulo()}')
+          print('========================')
+          print('')
+
+          print('- Cadastrando nova série.')
           titulo2 = input('Titulo: ').upper()
           ano2 = int(input('Ano: '))
           preco2 = float(input('Preço: $ '))
@@ -453,6 +471,7 @@ while login != '3':
             else:
               print('')
               print('Você não tem créditos suficientes para alugar esse filme!')
+              print('Para colocar mais créditos, acesse a opção 9) Ver Carteira.')
               cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
               input('')
           ###########################
@@ -503,6 +522,7 @@ while login != '3':
             else:
               print('')
               print('Você não tem créditos suficientes para alugar essa série!')
+              print('Para colocar mais créditos, acesse a opção 9) Ver Carteira.')
               cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
               input('')
           ###########################
