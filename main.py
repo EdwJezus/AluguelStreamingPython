@@ -171,9 +171,9 @@ while login != '3':
   print('')
   login = input('O que deseja fazer? (1/2/3) ')
 
-  ######################## Modo Operador
+#################################################### Modo Operador
 
-  ################### Login operador
+############################################## Login operador
 
   if login == '1':
     print('')
@@ -190,7 +190,7 @@ while login != '3':
       print('Login efetuado com sucesso!')
       print('Seja bem vindo operador!')
 
-      ################################### Menu
+############################################## Menu
 
       quest = 'n'
       while quest != '11':
@@ -209,7 +209,6 @@ while login != '3':
         print('======================')
         print('')
 
-        ##mensagem = '***obs: Primeiro você deve cadastrar genêros e diretores. E só depois os filmes e séries.'
         mensagem = '***obs: Já existem alguns genêros, diretores, filmes e séries pré-cadastrados. Porém se você deseja adicionar mais algum, basta cadastra-lo no modo operador.'
         cprint('\033[1m\033[3m' + mensagem, 'white', 'on_grey')
         
@@ -217,8 +216,8 @@ while login != '3':
         quest = input('O que deseja fazer? ')
         print('')
 
-        ###################################################### Cadastro
-        ############ Cadastrar Filme
+###################################################### Cadastro
+############################################## Cadastrar Filme
 
         if quest == '1':
           print('========================')
@@ -289,7 +288,7 @@ while login != '3':
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
 
-      ############ Cadastrar Serie
+############################################## Cadastrar Serie
 
         elif quest == '2':
           print('========================')
@@ -337,7 +336,7 @@ while login != '3':
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
 
-      ############ Cadastrar Diretor
+############################################## Cadastrar Diretor
 
         elif quest == '3':
           nome = input('Nome do diretor: ').upper()
@@ -349,7 +348,7 @@ while login != '3':
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-      ############ Cadastrar Genero
+############################################## Cadastrar Genero
 
         elif quest == '4':
           name = input('Genêro: ').upper()
@@ -360,14 +359,14 @@ while login != '3':
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-      ############ Sair do modo operador
+############################################## Sair do modo operador
 
         elif quest == '11':
           print('')
           print('Saiu do modo operador.')
           print('')
 
-      ############ Ajuda para erros OPERADOR
+############################################## Erro Comando Inválido
 
         else:
           print('')
@@ -375,7 +374,7 @@ while login != '3':
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-######################### Login incorreto
+############################################## Login incorreto
 
     else:
       print('')
@@ -426,8 +425,8 @@ while login != '3':
       
       quest2 = input('O que deseja fazer? ')
 
-      ################################################## Pesquisa
-      ############ Pesquisar Filme
+################################################## Pesquisa
+############################################## Pesquisar Filme
 
       if quest2 == '5':
         print('========================')
@@ -449,16 +448,15 @@ while login != '3':
           print('')
           print(f'Titulo: {filme_escolhido.getTitulo()}')
           print(f'Ano: {filme_escolhido.getAno()}')
-          ##print(f'***Genero: {filme_escolhido.getGenero()}')
           print(f'Genero: {filme_escolhido.genero.getName()}')
-          ##print(f'***Diretor: {filme_escolhido.getDiretor()}')
           print(f'Diretor: {filme_escolhido.diretor.getNome()}')
           print(
               f'Duração total: {filme_escolhido.calculaDuracaoTotal()} Minutos'
           )
           print(f'Preço aluguel do filme: $ {filme_escolhido.getPreco()}')
           print('')
-          ###################Aluguel
+          
+          ################### Alugar série
           aluguel = input('Deseja alugar o filme? (s/n) ')
           if aluguel == 's':
             if (filme_escolhido.getPreco()) <= (convidado1.getCreditos()):
@@ -475,12 +473,13 @@ while login != '3':
               cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
               input('')
           ###########################
+        
         else:
           print("Filme não encontrado.")
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-    ############ Pesquisar Serie
+############################################## Pesquisar Serie
 
       elif quest2 == '6':
         print('========================')
@@ -502,14 +501,14 @@ while login != '3':
           print('')
           print(f'Titulo: {serie_escolhida.getTitulo()}')
           print(f'Ano: {serie_escolhida.getAno()}')
-          ##print(f'**Genero: {serie_escolhida.getGenero()}')
           print(f'Genero: {serie_escolhida.genero.getName()}')
           print(
               f'Duração total: {serie_escolhida.calculaDuracaoTotal()} Minutos'
           )
           print(f'Preço aluguel da série: $ {serie_escolhida.getPreco()}')
           print('')
-          ###################Aluguel
+          
+          ################ Alugar Série
           aluguel2 = input('Deseja alugar a série? (s/n) ')
           if aluguel2 == 's':
             if (serie_escolhida.getPreco()) <= (convidado1.getCreditos()):
@@ -525,13 +524,14 @@ while login != '3':
               print('Para colocar mais créditos, acesse a opção 9) Ver Carteira.')
               cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
               input('')
-          ###########################
+          #########################
+        
         else:
           print("Série não encontrada.")
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-    ############ Pesquisar Diretor
+############################################## Pesquisar Diretor
 
       elif quest2 == '7':
         print('========================')
@@ -554,8 +554,8 @@ while login != '3':
           print(f'Idade: {diretor_escolhido.getIdade()}')
           print(f'Nacionalidade: {diretor_escolhido.getNacionalidade()}')
           print('')
-          ######### Projetos do diretor #######################
-
+          
+          ######## Projetos do diretor #######
           projetos_diretor = [
               projeto.getTitulo() for projeto in filmes
               if isinstance(projeto, Filme)
@@ -574,14 +574,14 @@ while login != '3':
             print('Nenhum projeto associado a este diretor encontrado.')
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
-
-          ###############################################
+          ################################
+        
         else:
           print("Diretor não encontrado.")
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-    ############ Pesquisar Genero
+############################################## Pesquisar Genero
 
       elif quest2 == '8':
         print('======================')
@@ -603,8 +603,8 @@ while login != '3':
           print(f'Nome: {genero_escolhido.getName()}')
           print(f'Informações: {genero_escolhido.getInfo()}')
           print('')
-          ###### Projetos do genêro ############################
-
+          
+          ###### Projetos do genêro ########
           projetos_genero = [
               projeto.getTitulo()
               for projeto in filmes if projeto.getGenero() == genero_escolhido
@@ -625,14 +625,14 @@ while login != '3':
             print('Nenhum projeto associado a este gênero encontrado.')
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
-
-        ######################################################
+          ###################################
+        
         else:
           print("Genero não encontrado.")
           cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
           input('')
 
-    ############ Ver Carteira
+############################################## Ver Carteira
 
       elif quest2 == '9':
         print(f'Valor atual em sua carteira: $ {convidado1.getCreditos()}')
@@ -650,7 +650,6 @@ while login != '3':
             print(f'Você adicionou $ {money} na sua carteira!')
             print(f'O valor atual em sua carteira é de $ {convidado1.getCreditos()}')
             print('')
-            ##input('Tecle ENTER para continuar.')
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
           else:
@@ -660,7 +659,7 @@ while login != '3':
             cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
             input('')
   
-    ############ Alugueis
+############################################## Alugueis
 
       elif quest2 == '10':
         print('========================')
@@ -672,13 +671,13 @@ while login != '3':
         cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
         input('')
 
-    ############ Fim programa
+############################################## Fim programa
 
       elif quest2 == '11':
         print('Saiu do modo convidado!')
         print('')
 
-    ############ Ajuda para erros CONVIDADO
+############################################## Erro Comando Inválido
 
       else:
         print('')
@@ -686,9 +685,17 @@ while login != '3':
         cprint('\033[1m\033[3m' + msg_continuar, 'white', 'on_grey')
         input('')
 
-############ Fim programa total
+############################################## Fim programa total
 
   elif login == '3':
+    print('')
+    print('''
+⣶⡄⠀⣶⠀⢰⣶⣶⡆⠠⣶⣶⣶⡆⢰⣶⣶⣦⠀⣶⠀⠀⠀⣶⡆⠐⣶⠀⣰⡖
+⣿⣷⡀⣿⠀⣸⣇⣀⡀⠀⠀⣿⠀⠀⢸⣇⣀⡀⠀⣿⠀⠀⠀⣿⡇⠀⠹⣷⡿⠁
+⣿⡿⣷⣿⠀⣿⡟⠛⠁⠀⠀⣿⠀⠀⢸⡏⠉⠁⠀⣿⠀⠀⠀⣿⡇⠀⢠⣿⣇⠀
+⣿⡇⢻⣿⠀⣿⣷⣶⡆⠀⠀⠿⠀⠀⠸⠇⠀⠀⠀⣿⣶⣶⠀⣿⡇⢀⣿⠋⢿⡆
+⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉
+    ''')
     print('')
     print('Obrigado por utilizar.')
     print('Programa Encerrado!')
