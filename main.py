@@ -339,6 +339,13 @@ while login != '3':
 ############################################## Cadastrar Diretor
 
         elif quest == '3':
+          print('========================')
+          print('DIRETORES JÁ CADASTRADOS')
+          print('========================')
+          for d in diretores:
+            print(f'- {d.getNome()}')
+          print('========================')
+          print('')
           nome = input('Nome do diretor: ').upper()
           idade = int(input('Idade: '))
           nacionalidade = input('Nacionalidade: ').upper()
@@ -351,6 +358,13 @@ while login != '3':
 ############################################## Cadastrar Genero
 
         elif quest == '4':
+          print('========================')
+          print(' GENÊROS JÁ CADASTRADOS')
+          print('========================')
+          for g in generos:
+            print(f'- {g.getName()}')
+          print('========================')
+          print('')
           name = input('Genêro: ').upper()
           info = input('Informações do genêro: ').upper()
           genero1 = Genero(name, info)
