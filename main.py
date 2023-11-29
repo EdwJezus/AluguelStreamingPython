@@ -3,10 +3,10 @@ from termcolor import cprint  #Biblioteca para personalizar textos
 ################################ Classes de Herança
 
 class Projeto():
-  def __init__(self, titulo, ano, umGenero, preco):
+  def __init__(self, titulo, ano, Genero, preco):
     self.titulo = titulo
     self.ano = ano
-    self.genero = umGenero #Associação
+    self.genero = Genero #Associação
     self.preco = preco
   def calculaDuracaoTotal(self): #Polimorfismo
     pass
@@ -28,9 +28,9 @@ class Projeto():
     return self.preco
 
 class Filme(Projeto):
-  def __init__(self, titulo, ano, umGenero, preco, umDiretor, duracao):
-    super().__init__(titulo, ano, umGenero, preco)
-    self.diretor = umDiretor #Associação
+  def __init__(self, titulo, ano, Genero, preco, Diretor, duracao):
+    super().__init__(titulo, ano, Genero, preco)
+    self.diretor = Diretor #Associação
     self.duracao = duracao
   def calculaDuracaoTotal(self): #Polimorfismo
     return self.duracao
@@ -40,8 +40,8 @@ class Filme(Projeto):
     return self.diretor
 
 class Serie(Projeto):
-  def __init__(self, titulo, ano, umGenero, preco, temporadas, duracaoEps, qntEps):
-    super().__init__(titulo, ano, umGenero, preco)
+  def __init__(self, titulo, ano, Genero, preco, temporadas, duracaoEps, qntEps):
+    super().__init__(titulo, ano, Genero, preco)
     self.temporadas = temporadas
     self.duracaoEps = duracaoEps
     self.qntEps = qntEps
